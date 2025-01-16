@@ -1,0 +1,211 @@
+openapi: 3.0.0
+info:
+  title: jitterbit-matheus-apis
+  version: 1.0.0
+servers:
+  - url: http://18.228.44.24:3000
+tags:
+  - name: Token
+  - name: API Manager
+  - name: Projects
+  - name: Jitterbit MQ
+paths:
+  /api/login:
+    post:
+      tags:
+        - Token
+      summary: harmony-login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                login: youemail@jitterbit.com
+                password: yourpassword
+      parameters:
+        - name: orgid
+          in: header
+          schema:
+            type: integer
+          example: '698260'
+        - name: envid
+          in: header
+          schema:
+            type: integer
+          example: '885790'
+        - name: email
+          in: header
+          schema:
+            type: string
+          example: teste
+        - name: password
+          in: header
+          schema:
+            type: string
+          example: teste
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/login/token:
+    post:
+      tags:
+        - Token
+      summary: harmony-login-token-only
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                login: youemail@jitterbit.com
+                password: yourpassword
+      parameters:
+        - name: orgid
+          in: header
+          schema:
+            type: integer
+          example: '698260'
+        - name: envid
+          in: header
+          schema:
+            type: integer
+          example: '885790'
+        - name: email
+          in: header
+          schema:
+            type: string
+          example: teste
+        - name: password
+          in: header
+          schema:
+            type: string
+          example: teste
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/turnlogson:
+    post:
+      tags:
+        - API Manager
+      summary: turn-logs-on
+      requestBody:
+        content: {}
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: token
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+        - name: orgId
+          in: query
+          schema:
+            type: integer
+          example: '1234'
+        - name: envId
+          in: query
+          schema:
+            type: integer
+          example: '1234'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/projects:
+    get:
+      tags:
+        - Projects
+      summary: project-list
+      parameters:
+        - name: token
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+        - name: orgId
+          in: query
+          schema:
+            type: integer
+          example: '673950'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/jbmq:
+    get:
+      tags:
+        - Jitterbit MQ
+      summary: jbmq-list
+      parameters:
+        - name: token
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+        - name: orgId
+          in: query
+          schema:
+            type: integer
+          example: '1234'
+        - name: envId
+          in: query
+          schema:
+            type: integer
+          example: '1234'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/jbmq/content:
+    get:
+      tags:
+        - Jitterbit MQ
+      summary: jbmq-content
+      parameters:
+        - name: token
+          in: header
+          schema:
+            type: string
+          example: '{{token}}'
+        - name: orgId
+          in: query
+          schema:
+            type: integer
+          example: '1234'
+        - name: envId
+          in: query
+          schema:
+            type: integer
+          example: '1234'
+        - name: queueName
+          in: query
+          schema:
+            type: string
+          example: prd-test-queue
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
